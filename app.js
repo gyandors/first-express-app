@@ -1,21 +1,23 @@
-// const http = require("http");
-
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use((req, res, next) => {
-  console.log("First middleware");
-  next();
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use("/add-product", (req, res, next) => {
+  res.send(
+    '<form action="/product" method="POST"> <input type="text" name="title" placeholder="Enter name" /> <input type="number" name="quantity" placeholder="Enter quantity" /> <button type="submit">Add Product</button> </form>'
+  );
 });
 
-app.use((req, res, next) => {
-  console.log("Second middleware");
-  // res.send({ name: "Sachin" });
-  res.send("<h1>Hello from Express Js</h1>");
+app.use("/product", (req, res, next) => {
+  console.log("In product domain", req.body);
+  res.redirect("/");
 });
 
-// const server = http.createServer(app);
-// server.listen(3000);
+app.use("/", (req, res, next) => {
+  res.send("<h1>Hello welcome to Express Js</h1>");
+});
 
 app.listen(3000);
