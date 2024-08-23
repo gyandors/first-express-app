@@ -1,23 +1,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const adminRouter = require("./routes/admin");
+const shopRouter = require("./routes/shop");
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/add-product", (req, res, next) => {
-  res.send(
-    '<form action="/product" method="POST"> <input type="text" name="title" placeholder="Enter name" /> <input type="number" name="quantity" placeholder="Enter quantity" /> <button type="submit">Add Product</button> </form>'
-  );
-});
+app.use("/admin", adminRouter);
 
-app.use("/product", (req, res, next) => {
-  console.log("In product domain", req.body);
-  res.redirect("/");
-});
+app.use(shopRouter);
 
-app.use("/", (req, res, next) => {
-  res.send("<h1>Hello welcome to Express Js</h1>");
+//This will execute for not found url's
+app.use((req, res, next) => {
+  res.status(404).send("<h1>Page not found</h1>");
 });
 
 app.listen(3000);
