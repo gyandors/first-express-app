@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Product</title>
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
   </head>
   <body>
     <header class="main-header">
@@ -17,7 +19,7 @@
             <a class="main-header__navlink" href="/contact-us">Contact Us</a>
           </li>
           <li>
-            <a class="main-header__navlink" href="/admin/add-product"
+            <a class="main-header__navlink active" href="/admin/add-product"
               >Add Product</a
             >
           </li>
@@ -25,26 +27,28 @@
       </nav>
     </header>
     <main class="main">
-      <h1 class="main-heading">Add products to shop</h1>
-      <form class="form-control" action="/admin/add-product" method="POST">
-        <label class="form-label" for="title">Title</label>
-        <input
-          class="form-input"
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Enter name"
-        />
-        <label class="form-label" for="quantity">Quantity</label>
-        <input
-          class="form-input"
-          type="number"
-          name="quantity"
-          id="quantity"
-          placeholder="Enter quantity"
-        />
-        <button class="form-action" type="submit">Add Product</button>
-      </form>
+      <div class="form-control">
+        <h1 class="form-heading">Add products to shop</h1>
+        <form action="/admin/add-product" method="POST">
+          <label class="form-label" for="title">Title</label>
+          <input
+            class="form-input"
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Enter title"
+          />
+          <label class="form-label" for="quantity">Quantity</label>
+          <input
+            class="form-input"
+            type="number"
+            name="quantity"
+            id="quantity"
+            placeholder="Enter quantity"
+          />
+          <button class="form-action" type="submit">Add Product</button>
+        </form>
+      </div>
     </main>
   </body>
 </html>

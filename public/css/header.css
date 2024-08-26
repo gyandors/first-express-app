@@ -1,0 +1,25 @@
+.main-header {
+  width: 100%;
+  box-shadow: 0px 0px 20px #ccc;
+  margin-bottom: 1rem;
+}
+
+.main-header__nav {
+  padding: 1.5rem 1rem;
+}
+
+.main-header__list {
+  display: flex;
+  gap: 3rem;
+  justify-content: flex-end;
+}
+
+.main-header__navlink {
+  color: #494949;
+  font-weight: bold;
+}
+.main-header__navlink:hover,
+.main-header__navlink.active {
+  color: #3553ff;
+  border-bottom: 2px solid;
+}

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
   </head>
   <body>
     <header class="main-header">
@@ -14,7 +16,9 @@
             <a class="main-header__navlink" href="/">Shop</a>
           </li>
           <li>
-            <a class="main-header__navlink" href="/contact-us">Contact Us</a>
+            <a class="main-header__navlink active" href="/contact-us"
+              >Contact Us</a
+            >
           </li>
           <li>
             <a class="main-header__navlink" href="/admin/add-product"
@@ -25,26 +29,28 @@
       </nav>
     </header>
     <main class="main">
-      <h1 class="main-heading">Contact us</h1>
-      <form class="form-control" action="/success" method="POST">
-        <label class="form-label" for="name">Name</label>
-        <input
-          class="form-input"
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Enter your name"
-        />
-        <label class="form-label" for="email">Email</label>
-        <input
-          class="form-input"
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter your email"
-        />
-        <button class="form-action" type="submit">Submit</button>
-      </form>
+      <div class="form-control">
+        <h1 class="form-heading">Contact us</h1>
+        <form action="/success" method="POST">
+          <label class="form-label" for="name">Name</label>
+          <input
+            class="form-input"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+          />
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+          />
+          <button class="form-action" type="submit">Submit</button>
+        </form>
+      </div>
     </main>
   </body>
 </html>
