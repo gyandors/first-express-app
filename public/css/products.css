@@ -1,0 +1,35 @@
+.product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.product-item {
+  background-color: white;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  padding: 0.5rem;
+}
+
+.product-quantity {
+  font-size: 1rem;
+  color: #747474;
+}
+
+.product-title {
+    background-color: #f1f1f1;
+    padding: 4px;
+}
+
+.product-price {
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.product-description {
+  width: 15rem;
+}

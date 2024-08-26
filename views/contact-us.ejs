@@ -1,0 +1,30 @@
+<%- include('includes/head') %>
+    <link rel="stylesheet" href="/css/forms.css" />
+  </head>
+  <body>
+    <%- include('includes/header') %>
+    <main>
+      <div class="form-control">
+        <h1 class="form-heading">Contact us</h1>
+        <form action="/success" method="POST">
+          <label class="form-label" for="name">Name</label>
+          <input
+            class="form-input"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+          />
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+          />
+          <button class="form-action" type="submit">Submit</button>
+        </form>
+      </div>
+    </main>
+<%- include('includes/close') %>
