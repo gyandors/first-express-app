@@ -9,7 +9,6 @@ const bodyParser = require("body-parser");
 const adminRouter = require("./routes/admin");
 const shopRouter = require("./routes/shop");
 const contactRouter = require("./routes/contact");
-const successPouter = require("./routes/success");
 
 //Main application
 const app = express();
@@ -23,17 +22,14 @@ app.use(express.static(path.join(__dirname, "public")));
 //Parsing the form data using body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/admin", adminRouter.router);
-
+//Routers
+app.use("/admin", adminRouter);
 app.use(contactRouter);
-
-app.use(successPouter);
-
 app.use(shopRouter);
 
-//This will execute for not found url's
-app.use((req, res, next) => {
-  res.status(404).render("404", { pageTitle: "Not Found", path:'/404' });
-});
+//This will execute for not found URL's
+const errorController = require('./controllers/error')
+app.use(errorController.notFound);
 
+//Starting the server with 3000 port number
 app.listen(3000);

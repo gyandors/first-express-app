@@ -1,8 +1,1 @@
-[
-  { "title": "Book", "quantity": "10" },
-  { "title": "Shirt", "quantity": "12" },
-  { "title": "Laptop", "quantity": "8" },
-  { "title": "Speakers", "quantity": "50" },
-  { "title": "Mobile", "quantity": "18" },
-  { "title": "Keys", "quantity": "100" }
-]
+[{"title":"Pen","quantity":"10"},{"title":"Book","quantity":"50"},{"title":"Shirt","quantity":"78"},{"title":"Laptop","quantity":"70"}]

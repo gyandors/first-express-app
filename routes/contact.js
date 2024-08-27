@@ -1,13 +1,11 @@
-const path = require("path");
-
 const express = require("express");
 
-const rootDir = require("../utils/path");
+const contactController = require("../controllers/contactUs");
 
 const router = express.Router();
 
-router.get("/contact-us", (req, res, next) => {
-  res.render("contact-us", { pageTitle: "Contact Us", path: '/contact-us' });
-});
+router.get("/contact-us", contactController.getContactUs);
+
+router.post("/contact-us", contactController.postContactUs);
 
 module.exports = router;
