@@ -1,7 +1,4 @@
-const fs = require("fs");
-
-const products = fs.readFileSync("assets/products.json");
-const parsedProducts = JSON.parse(products);
+const Product = require("../models/product");
 
 exports.getAddProduct = (req, res, next) => {
   res.render("add-product", {
@@ -11,15 +8,15 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-  parsedProducts.push({ title: req.body.title, quantity: req.body.quantity });
-  fs.writeFileSync("./assets/products.json", JSON.stringify(parsedProducts));
+  const product = new Product(req.body.title, req.body.quantity);
+  product.save();
   res.redirect("/");
 };
 
 exports.getProducts = (req, res, next) => {
   res.render("shop", {
     pageTitle: "Shop",
-    products: parsedProducts,
+    products: Product.getAll(),
     path: "/",
   });
 };
