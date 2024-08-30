@@ -1,0 +1,14 @@
+.product-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.product-title{
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #969696;
+    width: 90%;
+    text-align: center;
+}

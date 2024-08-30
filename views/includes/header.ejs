@@ -5,12 +5,16 @@
         <a class="main-header__navlink <%- path === '/' ? 'active' : '' %>" href="/">Shop</a>
       </li>
       <li>
+        <a class="main-header__navlink <%- path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+      </li>
+      <li>
+        <a class="main-header__navlink <%- path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+      </li>
+      <li>
         <a class="main-header__navlink <%- path === '/contact-us' ? 'active' : '' %>" href="/contact-us">Contact Us</a>
       </li>
       <li>
-        <a class="main-header__navlink <%- path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product"
-          >Add Product</a
-        >
+        <a class="main-header__navlink <%- path.includes('admin') ? 'active' : '' %>" href="/admin">Admin</a>
       </li>
     </ul>
   </nav>

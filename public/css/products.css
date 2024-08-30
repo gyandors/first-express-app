@@ -13,6 +13,8 @@
   border-radius: 8px;
   box-shadow: 0 0 10px #ccc;
   padding: 0.5rem;
+  min-height: 360px;
+  max-height: 360px;
 }
 
 .product-quantity {
@@ -21,8 +23,8 @@
 }
 
 .product-title {
-    background-color: #f1f1f1;
-    padding: 4px;
+  background-color: #f1f1f1;
+  padding: 4px;
 }
 
 .product-price {
@@ -32,4 +34,6 @@
 
 .product-description {
   width: 15rem;
+  max-height: 110px;
+  overflow: hidden;
 }

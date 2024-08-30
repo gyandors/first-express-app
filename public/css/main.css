@@ -20,3 +20,19 @@ a {
 a:focus {
   outline: none;
 }
+
+.btn {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background-color: #fff;
+  border: 1px solid #3553ff;
+  border-radius: 3px;
+}
+.btn:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #3553ff;
+}
+.btn:focus {
+  outline: 2px solid #3553ff;
+}

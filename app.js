@@ -6,9 +6,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 //Custom modules
-const adminRouter = require("./routes/admin");
 const shopRouter = require("./routes/shop");
-const contactRouter = require("./routes/contact");
+const adminRouter = require("./routes/admin");
 
 //Main application
 const app = express();
@@ -23,12 +22,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //Routers
+app.use("/", shopRouter);
 app.use("/admin", adminRouter);
-app.use(contactRouter);
-app.use(shopRouter);
 
 //This will execute for not found URL's
-const errorController = require('./controllers/error')
+const errorController = require("./controllers/error");
 app.use(errorController.notFound);
 
 //Starting the server with 3000 port number

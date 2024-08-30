@@ -8,10 +8,10 @@
         <div class="product">
           <% for( let product of products ) { %>
             <div class="product-item">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrvFMUzTLk2vs5HboO7_PpdR0qw-BrDpznrw&s" alt="Developer">
+              <img src="<%= product.image %>" alt="..." width="100" height="100">
               <h2 class="product-title"> <%= product.title %> <span class="product-quantity"> x<%= product.quantity %> </span> </h2>
-              <p class="product-price">Rs. 100/-</p>
-              <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptatibus laudantium distinctio accusamus quos at mollitia et praesentium qui aliquid illo molestiae sunt vel deserunt soluta temporibus, eius exercitationem. Cupiditate.</p>
+              <p class="product-price">Rs. <%= product.price %>/-</p>
+              <p class="product-description"><%= product.description %></p>
             </div>
           <% } %>
         </div>

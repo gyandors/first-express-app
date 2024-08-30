@@ -1,0 +1,50 @@
+<%- include('../includes/head') %>
+  <link rel="stylesheet" href="/css/forms.css" />
+  </head>
+  <body>
+    <%- include('../includes/header') %>
+    <main>
+      <div class="form-control">
+        <h1 class="form-heading">Add a product</h1>
+        <form action="/admin/add-product" method="POST">
+          <label class="form-label" for="title">Title</label>
+          <input
+            class="form-input"
+            type="text"
+            name="title"
+            id="title"
+          />
+          <label class="form-label" for="quantity">Quantity</label>
+          <input
+            class="form-input"
+            type="number"
+            name="quantity"
+            id="quantity"
+          />
+          <label class="form-label" for="price">Price</label>
+          <input
+            class="form-input"
+            type="number"
+            name="price"
+            id="price"
+          />
+          <label class="form-label" for="image">Image URL</label>
+          <input
+            class="form-input"
+            type="url"
+            name="image"
+            id="image"
+          />
+          <label class="form-label" for="description">Description</label>
+          <textarea
+            class="form-input"
+            type="url"
+            name="description"
+            id="description"
+            rows="5"
+          ></textarea>
+          <button class="form-action" type="submit">Add Product</button>
+        </form>
+      </div>
+    </main>
+<%- include('../includes/close') %>
