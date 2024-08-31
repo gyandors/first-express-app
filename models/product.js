@@ -6,8 +6,8 @@ const parsedProducts = JSON.parse(products);
 module.exports = class Product {
   constructor(title, quantity, price, image, description) {
     this.title = title;
-    this.quantity = quantity;
-    this.price = price;
+    this.quantity = +quantity;
+    this.price = +price;
     this.image = image;
     this.description = description;
   }

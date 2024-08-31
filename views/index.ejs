@@ -8,10 +8,15 @@
         <div class="product">
           <% for( let product of products ) { %>
             <div class="product-item">
-              <img src="<%= product.image %>" alt="..." width="100" height="100">
-              <h2 class="product-title"> <%= product.title %> <span class="product-quantity"> x<%= product.quantity %> </span> </h2>
-              <p class="product-price">Rs. <%= product.price %>/-</p>
-              <p class="product-description"><%= product.description %></p>
+              <a href="/products/<%= product._id %>">
+                <div>
+                  <img src="<%= product.image %>" alt="<%= product.title %>" width="100" height="100">
+                </div>
+                <h2 class="product-title"> <%= product.title %> <span class="product-quantity"> x<%= product.quantity %> </span> </h2>
+                <p class="product-price">Rs. <%= product.price %>/-</p>
+                <p class="product-description"><%= product.description %></p>
+                <%- include('includes/add-to-cart', {product: product}) %>
+              </a>
             </div>
           <% } %>
         </div>
