@@ -5,14 +5,15 @@
     <%- include('../includes/header') %>
     <main>
       <div class="form-control">
-        <h1 class="form-heading">Add a product</h1>
-        <form action="/admin/add-product" method="POST">
+        <h1 class="form-heading"><%- editing ? 'Edit a Product' : 'Add a Product' %></h1>
+        <form action="/admin/<%- editing ? 'edit-product' : 'add-product' %>" method="POST">
           <label class="form-label" for="title">Title</label>
           <input
             class="form-input"
             type="text"
             name="title"
             id="title"
+            value="<%- editing ? product.title : '' %>"
           />
           <label class="form-label" for="quantity">Quantity</label>
           <input
@@ -20,6 +21,7 @@
             type="number"
             name="quantity"
             id="quantity"
+            value="<%- editing ? product.quantity : '' %>"
           />
           <label class="form-label" for="price">Price</label>
           <input
@@ -27,6 +29,7 @@
             type="number"
             name="price"
             id="price"
+            value="<%- editing ? product.price : '' %>"
           />
           <label class="form-label" for="image">Image URL</label>
           <input
@@ -34,6 +37,7 @@
             type="url"
             name="image"
             id="image"
+            value="<%- editing ? product.image : '' %>"
           />
           <label class="form-label" for="description">Description</label>
           <textarea
@@ -42,8 +46,11 @@
             name="description"
             id="description"
             rows="5"
-          ></textarea>
-          <button class="form-action" type="submit">Add Product</button>
+          ><%- editing ? product.description : '' %></textarea>
+          <% if (editing) { %>
+            <input type="hidden" value="<%= product._id %>" name="productId">
+          <% } %>
+          <button class="form-action" type="submit"><%- editing ? 'Update Product' : 'Add Product' %></button>
         </form>
       </div>
     </main>

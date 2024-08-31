@@ -1,26 +1,28 @@
 <%- include('../includes/head') %>
   <link rel="stylesheet" href="/css/products.css">
+  <link rel="stylesheet" href="/css/admin.css">
   </head>
   <body>
     <%- include('../includes/header') %>
     <main>
-        <h1>Admin Control Panel</h1>
-        <a class="main-header__navlink <%- path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product</a>
-        <h1>Available Stocks</h1>
+      <div class="admin-header">
+        <h3 class="admin-heading">Admin Control Panel</h3>
+        <a class="btn" style="display: inline-block;" href="/admin/add-product">Add New Product</a>
+      </div>
         <% if (products.length>0) { %>
           <div class="product">
             <% for( let product of products ) { %>
               <div class="product-item">
-                <img src="<%= product.image %>" alt="..." width="100" height="100">
+                <div>
+                  <img src="<%= product.image %>" alt="<%= product.title %>" width="100" height="100">
+                </div>
                 <h2 class="product-title"> <%= product.title %> <span class="product-quantity"> x<%= product.quantity %> </span> </h2>
                 <p class="product-price">Rs. <%= product.price %>/-</p>
                 <p class="product-description"><%= product.description %></p>
-                <form action="/admin/edit-product/<%= product._id %>">
-                  <button class="btn" type="submit">Edit</button>
-                </form>
-                <form action="/admin/delete-product/<%= product._id %>" method="delete">
-                  <button class="btn" type="submit">Delete</button>
-                </form>
+                <div class="action-btn">
+                  <a class="btn" href="/admin/edit-product/<%= product._id %>?edit=true" type="submit">Edit</a>
+                  <a class="btn" href="/admin/delete-product/<%= product._id %>" type="submit">Delete</a>
+                </div>
               </div>
             <% } %>
           </div>

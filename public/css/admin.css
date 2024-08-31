@@ -1,0 +1,13 @@
+.admin-header {
+  text-align: center;
+}
+
+.admin-heading {
+  font-weight: 500;
+}
+
+.action-btn {
+  justify-content: center;
+  display: flex;
+  gap: 1rem;
+}
