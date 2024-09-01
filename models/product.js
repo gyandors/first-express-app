@@ -1,40 +1,37 @@
-const fs = require("fs");
-
-const products = fs.readFileSync("data/products.json");
-const parsedProducts = JSON.parse(products);
+const db = require("../utils/database");
 
 module.exports = class Product {
-  constructor(_id, title, quantity, price, image, description) {
-    this._id = _id;
+  constructor(title, quantity, price, image, description) {
     this.title = title;
-    this.quantity = +quantity;
     this.price = +price;
+    this.quantity = +quantity;
     this.image = image;
     this.description = description;
   }
 
   save() {
-    if (this._id) {
-      const index = parsedProducts.findIndex((p) => p._id === this._id);
-      parsedProducts[index] = this;
-    } else {
-      this._id = Date.now().toString();
-      parsedProducts.push(this);
-    }
+    return db.execute(
+      "INSERT INTO products (title, price, quantity, image, description) VALUES (?, ?, ?, ?, ?)",
+      [this.title, this.price, this.quantity, this.image, this.description]
+    );
+  }
 
-    fs.writeFileSync("./data/products.json", JSON.stringify(parsedProducts));
+  updateById(id) {
+    return db.execute(
+      "UPDATE products SET title = ?, price = ?, quantity = ?, image = ?, description = ? WHERE _id = ?",
+      [this.title, this.price, this.quantity, this.image, this.description, id]
+    );
   }
 
   static getAll() {
-    return parsedProducts;
+    return db.execute("SELECT * FROM products");
   }
 
   static getById(id) {
-    return parsedProducts.find((p) => p._id === id);
+    return db.execute("SELECT * FROM products WHERE _id = ?", [id]);
   }
 
   static deleteById(id) {
-    const updatedProducts = parsedProducts.filter((p) => p._id !== id);
-    fs.writeFileSync("./data/products.json", JSON.stringify(updatedProducts));
+    return db.execute("DELETE FROM products WHERE _id = ?", [id]);
   }
 };

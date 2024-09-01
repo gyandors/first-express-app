@@ -1,11 +1,15 @@
 const Product = require("../models/product");
 
 exports.getAdmin = (req, res, next) => {
-  res.render("admin/admin", {
-    pageTitle: "Admin",
-    products: Product.getAll(),
-    path: "/admin",
-  });
+  Product.getAll()
+    .then(([results, fields]) => {
+      res.render("admin/admin", {
+        pageTitle: "Admin",
+        products: results,
+        path: "/admin",
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getAddProduct = (req, res, next) => {
@@ -18,42 +22,50 @@ exports.getAddProduct = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
   const product = new Product(
-    null,
     req.body.title,
     req.body.quantity,
     req.body.price,
     req.body.image,
     req.body.description
   );
-  product.save();
-  res.redirect("/admin");
+  product
+    .save()
+    .then(() => res.redirect("/admin"))
+    .catch((err) => console.log(err));
 };
 
 exports.getEditProduct = (req, res, next) => {
   const editing = req.query.edit;
   if (!editing) res.redirect("/admin");
-  res.render("admin/product-form", {
-    pageTitle: "Edit Product",
-    path: "/admin/product-form",
-    editing: editing,
-    product: Product.getById(req.params.productId),
-  });
+
+  Product.getById(req.params.productId)
+    .then(([results, fields]) => {
+      res.render("admin/product-form", {
+        pageTitle: "Edit Product",
+        path: "/admin/product-form",
+        editing: editing,
+        product: results[0],
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.postEditProduct = (req, res, next) => {
   const product = new Product(
-    req.body.productId,
     req.body.title,
     req.body.quantity,
     req.body.price,
     req.body.image,
     req.body.description
   );
-  product.save();
-  res.redirect("/admin");
+  product
+    .updateById(req.body.productId)
+    .then(() => res.redirect("/admin"))
+    .catch((err) => console.log(err));
 };
 
 exports.getDeleteProduct = (req, res, next) => {
-  Product.deleteById(req.params.productId);
-  res.redirect("/admin");
+  Product.deleteById(req.params.productId)
+    .then(() => res.redirect("/admin"))
+    .catch((err) => console.log(err));
 };
