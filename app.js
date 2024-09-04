@@ -9,6 +9,8 @@ const bodyParser = require("body-parser");
 const shopRouter = require("./routes/shop");
 const adminRouter = require("./routes/admin");
 
+const sequelize = require("./utils/database");
+
 //Main application
 const app = express();
 
@@ -29,5 +31,7 @@ app.use("/admin", adminRouter);
 const errorController = require("./controllers/error");
 app.use(errorController.notFound);
 
-//Starting the server with 3000 port number
-app.listen(3000);
+sequelize
+  .sync()
+  .then(() => app.listen(3000))
+  .catch((err) => console.log(err));

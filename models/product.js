@@ -1,37 +1,34 @@
-const db = require("../utils/database");
+const Sequelize = require("sequelize");
 
-module.exports = class Product {
-  constructor(title, quantity, price, image, description) {
-    this.title = title;
-    this.price = +price;
-    this.quantity = +quantity;
-    this.image = image;
-    this.description = description;
-  }
+const sequelize = require("../utils/database");
 
-  save() {
-    return db.execute(
-      "INSERT INTO products (title, price, quantity, image, description) VALUES (?, ?, ?, ?, ?)",
-      [this.title, this.price, this.quantity, this.image, this.description]
-    );
-  }
+const Product = sequelize.define("products", {
+  _id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true,
+  },
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  price: {
+    type: Sequelize.DOUBLE,
+    allowNull: false,
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  image: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+  },
+  description: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+});
 
-  updateById(id) {
-    return db.execute(
-      "UPDATE products SET title = ?, price = ?, quantity = ?, image = ?, description = ? WHERE _id = ?",
-      [this.title, this.price, this.quantity, this.image, this.description, id]
-    );
-  }
-
-  static getAll() {
-    return db.execute("SELECT * FROM products");
-  }
-
-  static getById(id) {
-    return db.execute("SELECT * FROM products WHERE _id = ?", [id]);
-  }
-
-  static deleteById(id) {
-    return db.execute("DELETE FROM products WHERE _id = ?", [id]);
-  }
-};
+module.exports = Product;
